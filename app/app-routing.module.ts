@@ -6,7 +6,7 @@ import {AppDashboardComponent} from "./app-dashboard/app-dashboard.component";
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
-  {path: 'auth/callback', component: AuthCallbackComponent},
+  {path: 'exchange_token', component: AuthCallbackComponent},
   {path: 'dashboard', component: AppDashboardComponent},
 ];
 

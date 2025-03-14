@@ -8,6 +8,9 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class StravaAuthService {
+  private clientId = environment.stravaClientId;
+  private clientSecret = environment.stravaClientSecret;
+  private tokenUrl = 'https://www.strava.com/oauth/token';
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -16,12 +19,16 @@ export class StravaAuthService {
   }
 
   exchangeToken(authCode: string): Observable<any> {
-    return this.http.post(environment.stravaTokenUrl, {
-      client_id: environment.stravaClientId,
-      client_secret: environment.stravaClientSecret,
-      authCode: authCode,
+    console.log('Sending authCode to Strava:', authCode);
+
+    const body = {
+      client_id: this.clientId,
+      client_secret: this.clientSecret,
+      code: authCode,
       grant_type: 'authorization_code'
-    });
+    };
+
+    return this.http.post(this.tokenUrl, body);
   }
 
   refreshToken(refreshToken: string | undefined): Observable<any> {

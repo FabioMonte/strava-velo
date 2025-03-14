@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {StravaService} from "../strava.service";
 
 @Component({
@@ -11,7 +11,7 @@ import {StravaService} from "../strava.service";
     </div>
   `
 })
-export class AppDashboardComponent {
+export class AppDashboardComponent implements OnInit{
   athlete: any;
 
   constructor(private stravaservice: StravaService) { }

@@ -4,10 +4,10 @@ import {StravaAuthService} from "../strava-auth.service";
 @Component({
   selector: 'app-auth-callback',
   standalone: false,
-  templateUrl: '<p>Authenticating with Strava...</p>',
+  template: '<p>Authenticating with Strava...</p>',
   styleUrl: './auth-callback.component.css'
 })
-export class AuthCallbackComponent {
+export class AuthCallbackComponent implements OnInit{
 
   constructor(
     private route: ActivatedRoute,
